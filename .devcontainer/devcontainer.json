@@ -1,0 +1,124 @@
+{
+  "name": "NinoTS Development Environment",
+  "image": "oven/bun:alpine",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {
+      "installZsh": false,
+      "configureZshAsDefaultShell": false,
+      "installOhMyZsh": false,
+      "upgradePackages": true,
+      "username": "vscode",
+      "userUid": "automatic",
+      "userGid": "automatic"
+    },
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    }
+  },
+  "customizations": {
+    "vscode": {      "extensions": [
+        "oven.bun-vscode",
+        "ms-vscode.vscode-typescript-next",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "ms-vscode.vscode-json",
+        "streetsidesoftware.code-spell-checker",
+        "ms-vscode.vscode-eslint",
+        "github.copilot",
+        "github.copilot-chat",
+        "ms-vscode.test-adapter-converter",
+        "hbenl.vscode-test-explorer",
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "formulahendry.auto-rename-tag",
+        "christian-kohler.path-intellisense",
+        "ms-vscode.hexeditor",
+        "redhat.vscode-yaml",
+        "ms-vscode.vscode-markdown",
+        "shd101wyy.markdown-preview-enhanced",
+        "ms-vscode.remote-repositories",
+        "editorconfig.editorconfig",
+        "lokalise.i18n-ally"
+      ],
+      "settings": {
+        "typescript.preferences.importModuleSpecifier": "relative",
+        "typescript.suggest.autoImports": true,
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit",
+          "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "files.associations": {
+          "*.toml": "toml",
+          "bunfig.toml": "toml"
+        },
+        "bun.runtime": "/usr/local/bin/bun",        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          },
+          "zsh": {
+            "path": "/bin/zsh",
+            "icon": "terminal-bash"
+          },
+          "fish": {
+            "path": "/usr/bin/fish",
+            "icon": "terminal-bash"
+          },
+          "nushell": {
+            "path": "/usr/local/bin/nu",
+            "icon": "terminal-bash"
+          }
+        },
+        "workbench.colorTheme": "Default Dark+",
+        "editor.minimap.enabled": true,
+        "editor.lineNumbers": "on",
+        "editor.rulers": [80, 120],
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "typescript.preferences.quoteStyle": "double",
+        "javascript.preferences.quoteStyle": "double"
+      }
+    }
+  },
+  "forwardPorts": [3000, 3001, 8080, 9229],
+  "portsAttributes": {
+    "3000": {
+      "label": "NinoTS App",
+      "onAutoForward": "notify"
+    },
+    "3001": {
+      "label": "Dev Server",
+      "onAutoForward": "silent"
+    },
+    "8080": {
+      "label": "Preview",
+      "onAutoForward": "silent"
+    },
+    "9229": {
+      "label": "Debug Port",
+      "onAutoForward": "silent"
+    }
+  },
+  "postCreateCommand": "/bin/sh .devcontainer/setup.sh",
+  "remoteUser": "vscode",
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+  "mounts": [
+    "source=${localWorkspaceFolder}/.cache,target=/workspace/.cache,type=bind,consistency=cached",
+    "source=ninots-node-modules,target=/workspace/node_modules,type=volume"
+  ],  "containerEnv": {
+    "NODE_ENV": "development",
+    "BUN_INSTALL": "/usr/local/bun",
+    "PATH": "/usr/local/bun/bin:${PATH}",
+    "LANG": "pt_BR.UTF-8",
+    "LC_ALL": "pt_BR.UTF-8"
+  },  "initializeCommand": "echo 'Inicializando ambiente de desenvolvimento NinoTS...'",
+  "updateContentCommand": "bun install --frozen-lockfile",
+  "postStartCommand": "echo 'Ambiente NinoTS pronto! Escolha seu shell preferido: bash, zsh, fish ou nushell 🚀'"
+}

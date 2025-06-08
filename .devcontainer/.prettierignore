@@ -1,0 +1,16 @@
+# Arquivos ignorados pelo Prettier no DevContainer
+node_modules/
+dist/
+build/
+.cache/
+*.log
+.env
+.env.local
+.env.*.local
+coverage/
+.nyc_output/
+.vscode/
+.devcontainer/
+*.min.js
+*.min.css
+bun.lockb

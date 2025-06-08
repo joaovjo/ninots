@@ -1,0 +1,23 @@
+{
+  "locales": {
+    "pt-BR": {
+      "name": "Português (Brasil)",
+      "flag": "🇧🇷",
+      "default": true
+    },
+    "en": {
+      "name": "English",
+      "flag": "🇺🇸"
+    }
+  },
+  "sourceLanguage": "pt-BR",
+  "namespaces": ["common", "cli", "commands", "errors", "success"],
+  "pathMatcher": "{locale}/{namespace}.json",
+  "extractors": [
+    {
+      "extensions": [".ts", ".js", ".tsx", ".jsx"],
+      "keyMatchReg": "(?:^|[^\\w\\d])(?:t|\\$t)\\(\\s*['\"`]([\\w\\d\\.\\-_]+)['\"`]",
+      "detected": ["ts", "js"]
+    }
+  ]
+}

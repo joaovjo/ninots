@@ -1,0 +1,65 @@
+# EditorConfig é incrível: https://EditorConfig.org
+
+# Arquivo raiz
+root = true
+
+# Configurações para todos os arquivos
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+# Arquivos TypeScript e JavaScript
+[*.{ts,js,tsx,jsx}]
+indent_size = 4
+quote_type = double
+
+# Arquivos JSON
+[*.json]
+indent_size = 2
+
+# Arquivos YAML
+[*.{yml,yaml}]
+indent_size = 2
+
+# Arquivos TOML
+[*.toml]
+indent_size = 2
+
+# Arquivos Markdown
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = 100
+
+# Arquivos de configuração
+[*.{xml,config,props,targets,nuspec,resx,ruleset,vsixmanifest,vsct}]
+indent_size = 2
+
+# Arquivos shell
+[*.{sh,bash,zsh,fish}]
+indent_size = 2
+
+# Nushell
+[*.nu]
+indent_size = 2
+
+# Makefile
+[Makefile]
+indent_style = tab
+
+# Package.json e similares
+[package.json]
+indent_size = 2
+
+# Arquivos de lock
+[*.lockb]
+insert_final_newline = false
+trim_trailing_whitespace = false
+
+# Logs
+[*.log]
+insert_final_newline = false
+trim_trailing_whitespace = false
